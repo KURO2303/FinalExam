@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="379.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-8.0" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="392.0">
+         <children>
+            <ImageView fitHeight="343.0" fitWidth="399.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Screenshot%202024-03-16%20150210.png" />
+               </image>
+            </ImageView>
+            <Label alignment="TOP_LEFT" layoutX="99.0" layoutY="14.0" prefHeight="127.0" prefWidth="194.0" style="-fx-background-color: #20120F;" text="We deeply apologize to turn down" textFill="#f7f1f1" />
+            <Label alignment="TOP_LEFT" layoutX="99.0" layoutY="35.0" prefHeight="18.0" prefWidth="194.0" style="-fx-background-color: #20120F; -fx-alignment: #20120F;" text="your booking at our  hotel." textFill="#fcf8f8" />
+            <ImageView fitHeight="37.0" fitWidth="33.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pngtree-cat-default-avatar-png-image_5416936.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="99.0" layoutY="53.0" prefHeight="18.0" prefWidth="194.0" style="-fx-background-color: #20120F;" text="We hope to see you again at our " textFill="#faf5f5" />
+            <Label layoutX="99.0" layoutY="78.0" prefHeight="18.0" prefWidth="194.0" style="-fx-background-color: #20120F;" text="hotel in the near future." textFill="#f7f2f2" />
+            <Label layoutX="143.0" layoutY="116.0" prefHeight="18.0" prefWidth="149.0" text="Best regard, Black Cat Hotel" textFill="#efe6e6" />
+            <Button layoutX="334.0" layoutY="310.0" mnemonicParsing="false" onAction="#OK3Clicked" text="OK" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

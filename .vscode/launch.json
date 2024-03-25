@@ -1,0 +1,49 @@
+{
+    "configurations": [
+    
+        {
+            "type": "java",
+            "name": "Launch Java Program",
+            "request": "launch",
+            "mainClass": "",
+            "vmArgs": "--module-path \"G:/KUROjava/javafx-sdk-21.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+    {
+        "name": "Launch Chrome",
+        "request": "launch",
+        "type": "chrome",
+        "url": "http://localhost:8080",
+        "webRoot": "${workspaceFolder}"
+        
+    },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "Project_90dac737",
+            "vmArgs": "--module-path \"G:/KUROjava/javafx-sdk-21.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+        },
+        {
+            "type": "cmake",
+            "request": "launch",
+            "name": "CMake: Configure project",
+            "cmakeDebugType": "configure",
+            "clean": false,
+            "configureAll": false
+        }
+    ]
+}
