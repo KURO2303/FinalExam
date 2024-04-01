@@ -4,7 +4,9 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -39,13 +41,13 @@
       </Label>
       <TextField fx:id="FirstName" layoutX="14.0" layoutY="197.0" prefHeight="26.0" prefWidth="280.0" promptText="First" />
       <TextField fx:id="LastName" layoutX="300.0" layoutY="197.0" prefHeight="26.0" prefWidth="280.0" promptText="Last" />
-      <Label layoutX="14.0" layoutY="235.0" text="Address:">
+      <Label layoutX="14.0" layoutY="264.0" text="Address:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="Address1" layoutX="13.0" layoutY="255.0" prefHeight="26.0" prefWidth="568.0" promptText="Address line 1" />
-      <TextField fx:id="Address2" layoutX="13.0" layoutY="289.0" prefHeight="26.0" prefWidth="568.0" promptText="Address line 2" />
+      <TextField fx:id="Address" layoutX="13.0" layoutY="284.0" prefHeight="26.0" prefWidth="566.0" promptText="Address line " />
+      <TextField fx:id="ID" layoutX="87.0" layoutY="237.0" prefHeight="26.0" prefWidth="206.0" promptText="Citizen id" />
       <TextField fx:id="City" layoutX="13.0" layoutY="323.0" prefHeight="26.0" prefWidth="280.0" promptText="City" />
       <TextField fx:id="Zip" layoutX="13.0" layoutY="357.0" prefHeight="26.0" prefWidth="280.0" promptText="Postal / Zip Code" />
       <Label layoutX="14.0" layoutY="397.0" prefHeight="20.0" prefWidth="138.0" text="Contact Information">
@@ -127,5 +129,26 @@
       <DatePicker fx:id="Time1" layoutX="182.0" layoutY="583.0" />
       <DatePicker fx:id="Time2" layoutX="383.0" layoutY="581.0" />
       <Button layoutX="568.0" layoutY="12.0" mnemonicParsing="false" onAction="#X2Clicked" text="X" />
+      <Label layoutX="15.0" layoutY="240.0" prefHeight="20.0" prefWidth="74.0" text="ID number:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="299.0" layoutY="235.0" prefHeight="27.0" prefWidth="280.0">
+         <children>
+            <Label layoutX="7.0" layoutY="4.0" prefHeight="20.0" prefWidth="32.0" text="Sex:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="Male" layoutX="39.0" layoutY="5.0" mnemonicParsing="false" text="Male">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="Female" layoutX="97.0" layoutY="5.0" mnemonicParsing="false" text="Female" toggleGroup="$toggleGroup" />
+            <RadioButton fx:id="Other" layoutX="171.0" layoutY="5.0" mnemonicParsing="false" text="Other" toggleGroup="$toggleGroup" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

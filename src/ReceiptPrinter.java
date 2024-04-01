@@ -25,6 +25,7 @@ public class ReceiptPrinter {
     @FXML private TextField Time2R;
     @FXML private TextField DateR;
     @FXML private TextField MoneyR;
+    @FXML private TextField NR;
 
     @FXML
     void AddClicked(ActionEvent event) {
@@ -60,13 +61,14 @@ public class ReceiptPrinter {
                     PhoneR.setText("Phone: "+binaryToString(fields[9]));
                     EmailR.setText("Email: "+binaryToString(fields[6]));
                     RoomR.setText("Room: "+binaryToString(fields[14]));
-                    AddressR.setText("Address: "+binaryToString(fields[3])+" "+binaryToString(fields[4]));
+                    AddressR.setText("Address: "+binaryToString(fields[3]));
                     break; 
                 } else {
                     System.err.println("Insufficient fields in the binary data");
                 }
             }
         } catch (IOException e) {}
+
         Timeline timeline = new Timeline(//UPDATE TIME
                 new KeyFrame(Duration.seconds(1), e -> {
                     LocalDate currentDate = LocalDate.now();

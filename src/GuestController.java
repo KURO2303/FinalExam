@@ -14,7 +14,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 public class GuestController {
@@ -23,8 +25,8 @@ public class GuestController {
     ObservableList<String> CountryList = FXCollections.observableArrayList("VietNam", "France", "America");
     ObservableList<String> RoomIDList = FXCollections.observableArrayList("Normal", "V.I.P.", "Double Bed");
 
-    @FXML private TextField Address1;
-    @FXML private TextField Address2;
+    @FXML private TextField Address;
+    @FXML private TextField ID;
     @FXML private TextField City;
     @FXML private TextField FirstName;
     @FXML private TextField LastName;
@@ -38,12 +40,21 @@ public class GuestController {
     @FXML private ChoiceBox<String> Region;
     @FXML private ChoiceBox<String> RoomID;
     @FXML private ChoiceBox<String> Country;
+    @FXML private RadioButton Female;
+    @FXML private RadioButton Male;
+    @FXML private RadioButton Other;
+    
+    private ToggleGroup toggleGroup;
 
     @FXML
     private void initialize() {
         Region.setItems(RegionList);
         RoomID.setItems(RoomIDList);
         Country.setItems(CountryList);
+        toggleGroup = new ToggleGroup();
+        Female.setToggleGroup(toggleGroup);
+        Male.setToggleGroup(toggleGroup);
+        Other.setToggleGroup(toggleGroup);
     }
 
     @FXML
@@ -56,8 +67,8 @@ public class GuestController {
         guestInfo[0] = FirstName.getText();
         guestInfo[1] = LastName.getText();
         guestInfo[2] = Zip.getText();
-        guestInfo[3] = Address1.getText();
-        guestInfo[4] = Address2.getText();
+        guestInfo[3] = Address.getText();
+        guestInfo[4] = ID.getText();
         guestInfo[5] = City.getText();
         guestInfo[6] = Email.getText();
         guestInfo[7] = NAdults.getText();
@@ -69,8 +80,18 @@ public class GuestController {
         guestInfo[13] = Country.getValue();
         guestInfo[14] = RoomID.getValue();
         guestInfo[15] = String.valueOf(stayDuration);
+        guestInfo[16] = Gender();
         saveToFile(guestInfo);
 
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
+        Scene NewGuestScene = new Scene(NewGuestInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(NewGuestScene);
+        window.show();
+    }
+
+    @FXML
+    void X2Clicked(ActionEvent event) throws IOException {
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -106,4 +127,16 @@ public class GuestController {
     private long calculateStayDuration(LocalDate startDate, LocalDate endDate) {
         return ChronoUnit.DAYS.between(startDate, endDate);
     }
+
+    private String Gender() {
+        if (Male.isSelected()) {
+            return "Male";
+    } else if (Female.isSelected()) {
+            return "Female";
+    } else if (Other.isSelected()) {
+            return "Other";
+    } else {
+            return "";
+    }
+}
 }
