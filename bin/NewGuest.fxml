@@ -47,10 +47,6 @@
       <TextField fx:id="Address2" layoutX="13.0" layoutY="289.0" prefHeight="26.0" prefWidth="568.0" promptText="Address line 2" />
       <TextField fx:id="City" layoutX="13.0" layoutY="323.0" prefHeight="26.0" prefWidth="280.0" promptText="City" />
       <TextField fx:id="Zip" layoutX="13.0" layoutY="357.0" prefHeight="26.0" prefWidth="280.0" promptText="Postal / Zip Code" />
-      <ChoiceBox layoutX="300.0" layoutY="323.0" prefHeight="26.0" prefWidth="280.0" />
-      <Label layoutX="305.0" layoutY="327.0" prefHeight="18.0" prefWidth="83.0" text="Region" />
-      <ChoiceBox layoutX="300.0" layoutY="357.0" prefHeight="26.0" prefWidth="280.0" />
-      <Label layoutX="305.0" layoutY="361.0" text="Country" />
       <Label layoutX="14.0" layoutY="397.0" prefHeight="20.0" prefWidth="138.0" text="Contact Information">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -95,8 +91,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="12.0" layoutY="581.0" prefHeight="26.0" prefWidth="112.0" />
-      <Label layoutX="14.0" layoutY="586.0" text="Type of room" />
       <Label layoutX="150.0" layoutY="561.0" prefHeight="20.0" prefWidth="138.0" text="Reservation time">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -114,5 +108,22 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="300.0" layoutY="325.0" prefHeight="26.0" prefWidth="280.0">
+         <children>
+            <ChoiceBox fx:id="Region" layoutX="58.0" prefHeight="26.0" prefWidth="222.0" />
+            <Label layoutX="6.0" layoutY="4.0" prefHeight="18.0" prefWidth="83.0" text="Region:" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="300.0" layoutY="357.0" prefHeight="26.0" prefWidth="280.0">
+         <children>
+            <ChoiceBox fx:id="Country" layoutX="58.0" prefHeight="26.0" prefWidth="222.0" />
+            <Label layoutX="7.0" layoutY="4.0" text="Country:" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="14.0" layoutY="582.0" prefHeight="26.0" prefWidth="112.0">
+         <children>
+            <ChoiceBox fx:id="RoomID" prefHeight="26.0" prefWidth="112.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -1,16 +1,25 @@
 import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class GuestController {
+
+    ObservableList<String> RegionList = FXCollections.observableArrayList("Asia", "Europe", "North America");
+    ObservableList<String> CountryList = FXCollections.observableArrayList("VietNam", "France", "America");
+    ObservableList<String> RoomIDList = FXCollections.observableArrayList("Normal", "V.I.P.", "Double Bed");
+
     @FXML
     private TextField Address1;
     @FXML
@@ -35,10 +44,23 @@ public class GuestController {
     private TextField Time1;
     @FXML
     private TextField Time2;
+    @FXML
+    private ChoiceBox<String> Region;
+    @FXML
+    private ChoiceBox<String> RoomID;
+    @FXML
+    private ChoiceBox<String> Country;
+
+    @FXML
+    private void initialize() {
+        Region.setItems(RegionList);
+        RoomID.setItems(RoomIDList);
+        Country.setItems(CountryList);
+    }
 
     @FXML
     void RoomReservationClicked(ActionEvent event) throws IOException {
-        String[] guestInfo = new String[13];
+        String[] guestInfo = new String[15];
         guestInfo[0] = FirstName.getText();
         guestInfo[1] = LastName.getText();
         guestInfo[2] = Zip.getText();
@@ -51,24 +73,41 @@ public class GuestController {
         guestInfo[9] = Phone.getText();
         guestInfo[10] = Time1.getText();
         guestInfo[11] = Time2.getText();
+        guestInfo[12] = Region.getValue();
+        guestInfo[13] = Country.getValue();
+        guestInfo[14] = RoomID.getValue();
         saveToFile(guestInfo);
 
-        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("WP.fxml"));
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(NewGuestScene);
         window.show();
     }
 
-    private void saveToFile(String[] guestInfo){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("HotelData.dat", true))) {
+    private void saveToFile(String[] guestInfo) {
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("HotelData.dat", true)))) {
             for (String info : guestInfo) {
-                writer.write(info);
+                if (info != null) {
+                    String binaryString = stringToBinary(info);
+                    writer.write(binaryString + ","); 
+                }
             }
-        } catch (IOException e){}
+            writer.newLine();
+            writer.flush(); 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+
+    private String stringToBinary(String str) {
+        StringBuilder binary = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            String binaryChar = Integer.toBinaryString(c);
+            binary.append(binaryChar).append(" ");
+        }
+        return binary.toString();
     }
     
 }
-
-
-

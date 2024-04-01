@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="204.0" prefWidth="502.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <ImageView fitHeight="128.0" fitWidth="116.0" layoutX="24.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="14.0" layoutY="294.0" mnemonicParsing="false" onAction="#CancelClicked1" prefHeight="26.0" prefWidth="138.0" text="Log Out" />
+      <ImageView fitHeight="325.0" fitWidth="523.0" layoutX="166.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@475472037.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="33.0" layoutX="607.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pngtree-cat-default-avatar-png-image_5416936.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="235.0" layoutY="102.0" prefHeight="26.0" prefWidth="200.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#ComfirmClicked" prefHeight="26.0" prefWidth="200.0" text="Comfirm" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="235.0" layoutY="132.0" prefHeight="26.0" prefWidth="200.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#CancelClicked1" prefHeight="26.0" prefWidth="200.0" text="Cancel" />
-         </children>
-      </AnchorPane>
-      <Label layoutX="7.0" layoutY="33.0" text="Before we allow you to enter, we want to do a little test to ensure you're human">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <Button layoutX="14.0" layoutY="253.0" mnemonicParsing="false" onAction="#BOOKClicked" prefHeight="26.0" prefWidth="138.0" text="Book a room" />
+      <Button layoutX="14.0" layoutY="208.0" mnemonicParsing="false" onAction="#ListClicked" prefHeight="26.0" prefWidth="138.0" text="Room List" />
    </children>
 </AnchorPane>

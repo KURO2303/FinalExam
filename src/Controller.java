@@ -7,17 +7,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class Controller {
-     @FXML
+    @FXML
     private TextField hiUser;
     @FXML
     private PasswordField hiPass;
     @FXML
     private Button loginButton;
-
 
     @FXML
     void EmployeeClicked(ActionEvent event) throws IOException {
@@ -73,15 +71,7 @@ public class Controller {
 
     @FXML
     void CancelClicked2(ActionEvent event) throws IOException{
-    }
 
-    @FXML
-    void ComfirmClicked(ActionEvent event) throws IOException {
-        Parent TestInterface = FXMLLoader.load(getClass().getResource("Test.fxml"));
-        Scene TestScene = new Scene(TestInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(TestScene);
-        window.show();
     }
 
     @FXML
@@ -118,8 +108,27 @@ public class Controller {
     }
 
     @FXML
-    void CorrectClicked(ActionEvent event) throws IOException {
+    void BOOKClicked(ActionEvent event) throws IOException {
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("NewGuest.fxml"));
+        Scene NewGuestScene = new Scene(NewGuestInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(NewGuestScene);
+        window.show();
+    }
+
+    
+    @FXML
+    void ListClicked(ActionEvent event) throws IOException {
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("RL.fxml"));
+        Scene NewGuestScene = new Scene(NewGuestInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(NewGuestScene);
+        window.show();
+    }
+
+    @FXML
+    void OK4Clicked(ActionEvent event) throws IOException {
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(NewGuestScene);
