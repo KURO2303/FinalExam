@@ -126,5 +126,6 @@
       </AnchorPane>
       <DatePicker fx:id="Time1" layoutX="182.0" layoutY="583.0" />
       <DatePicker fx:id="Time2" layoutX="383.0" layoutY="581.0" />
+      <Button layoutX="568.0" layoutY="12.0" mnemonicParsing="false" onAction="#X2Clicked" text="X" />
    </children>
 </AnchorPane>

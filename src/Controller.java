@@ -134,5 +134,34 @@ public class Controller {
         window.setScene(NewGuestScene);
         window.show();
     }
+
+    
+    @FXML
+    void ViewClicked(ActionEvent event) throws IOException {
+        Parent ViewInterface = FXMLLoader.load(getClass().getResource("RoomList.fxml"));
+        Scene NewViewScene = new Scene(ViewInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(NewViewScene);
+        window.show();
+    }
+
+    @FXML
+    void XClicked(ActionEvent event) throws IOException {
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
+        Scene NewGuestScene = new Scene(NewGuestInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(NewGuestScene);
+        window.show();
+    }
+
+    @FXML
+    void X2Clicked(ActionEvent event) throws IOException {
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
+        Scene NewGuestScene = new Scene(NewGuestInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(NewGuestScene);
+        window.show();
+    }
+
 }
 

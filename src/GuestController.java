@@ -2,6 +2,8 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.time.LocalDate; 
+import java.time.temporal.ChronoUnit; 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,36 +23,21 @@ public class GuestController {
     ObservableList<String> CountryList = FXCollections.observableArrayList("VietNam", "France", "America");
     ObservableList<String> RoomIDList = FXCollections.observableArrayList("Normal", "V.I.P.", "Double Bed");
 
-    @FXML
-    private TextField Address1;
-    @FXML
-    private TextField Address2;
-    @FXML
-    private TextField City;
-    @FXML
-    private TextField FirstName;
-    @FXML
-    private TextField LastName;
-    @FXML
-    private TextField Zip;
-    @FXML
-    private TextField Email;
-    @FXML
-    private TextField NAdults;
-    @FXML
-    private TextField NChild;
-    @FXML
-    private TextField Phone;
-    @FXML
-    private DatePicker Time1;
-    @FXML
-    private DatePicker Time2;
-    @FXML
-    private ChoiceBox<String> Region;
-    @FXML
-    private ChoiceBox<String> RoomID;
-    @FXML
-    private ChoiceBox<String> Country;
+    @FXML private TextField Address1;
+    @FXML private TextField Address2;
+    @FXML private TextField City;
+    @FXML private TextField FirstName;
+    @FXML private TextField LastName;
+    @FXML private TextField Zip;
+    @FXML private TextField Email;
+    @FXML private TextField NAdults;
+    @FXML private TextField NChild;
+    @FXML private TextField Phone;
+    @FXML private DatePicker Time1;
+    @FXML private DatePicker Time2;
+    @FXML private ChoiceBox<String> Region;
+    @FXML private ChoiceBox<String> RoomID;
+    @FXML private ChoiceBox<String> Country;
 
     @FXML
     private void initialize() {
@@ -61,7 +48,11 @@ public class GuestController {
 
     @FXML
     void RoomReservationClicked(ActionEvent event) throws IOException {
-        String[] guestInfo = new String[15];
+        LocalDate startDate = Time1.getValue();
+        LocalDate endDate = Time2.getValue();
+
+        long stayDuration = calculateStayDuration(startDate, endDate);
+        String[] guestInfo = new String[17];
         guestInfo[0] = FirstName.getText();
         guestInfo[1] = LastName.getText();
         guestInfo[2] = Zip.getText();
@@ -77,6 +68,7 @@ public class GuestController {
         guestInfo[12] = Region.getValue();
         guestInfo[13] = Country.getValue();
         guestInfo[14] = RoomID.getValue();
+        guestInfo[15] = String.valueOf(stayDuration);
         saveToFile(guestInfo);
 
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
@@ -111,4 +103,7 @@ public class GuestController {
         return binary.toString();
     }
     
+    private long calculateStayDuration(LocalDate startDate, LocalDate endDate) {
+        return ChronoUnit.DAYS.between(startDate, endDate);
+    }
 }
