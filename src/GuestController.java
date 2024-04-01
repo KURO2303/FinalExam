@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -41,9 +42,9 @@ public class GuestController {
     @FXML
     private TextField Phone;
     @FXML
-    private TextField Time1;
+    private DatePicker Time1;
     @FXML
-    private TextField Time2;
+    private DatePicker Time2;
     @FXML
     private ChoiceBox<String> Region;
     @FXML
@@ -71,8 +72,8 @@ public class GuestController {
         guestInfo[7] = NAdults.getText();
         guestInfo[8] = NChild.getText();
         guestInfo[9] = Phone.getText();
-        guestInfo[10] = Time1.getText();
-        guestInfo[11] = Time2.getText();
+        guestInfo[10] = Time1.getValue().toString();
+        guestInfo[11] = Time2.getValue().toString();
         guestInfo[12] = Region.getValue();
         guestInfo[13] = Country.getValue();
         guestInfo[14] = RoomID.getValue();

@@ -28,7 +28,7 @@ public class ReceiptPrinter {
 
     @FXML
     void AddClicked(ActionEvent event) {
-
+        
     }
 
     @FXML
