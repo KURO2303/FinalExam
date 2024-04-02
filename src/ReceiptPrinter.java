@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -24,12 +25,34 @@ public class ReceiptPrinter {
     @FXML private TextField Time1R;
     @FXML private TextField Time2R;
     @FXML private TextField DateR;
-    @FXML private TextField MoneyR;
+    @FXML private TextField MoneyR1;
+    @FXML private Label MoneyR2;
+    @FXML private Label MoneyR3;
     @FXML private TextField NR;
+    @FXML private TextField DescriptionR;
+    @FXML private TextField NumberR;
+    @FXML private TextField PriceR;
+    @FXML private TextField TotalR;
+    @FXML private Label SubTotal1;
+    @FXML private Label SubTotal2;
+    @FXML private Label TaxR;
 
     @FXML
-    void AddClicked(ActionEvent event) {
-        
+    void AddClicked(ActionEvent event) throws IOException {
+        Parent AddInterface = FXMLLoader.load(getClass().getResource("AR.fxml"));
+        Scene AddScene = new Scene(AddInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(AddScene);
+        window.show();
+    }
+
+    @FXML
+    void CancelClicked2(ActionEvent event) throws IOException{
+        Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
+        Scene mainScene = new Scene(mainInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(mainScene);
+        window.show();
     }
 
     @FXML
@@ -62,6 +85,16 @@ public class ReceiptPrinter {
                     EmailR.setText("Email: "+binaryToString(fields[6]));
                     RoomR.setText("Room: "+binaryToString(fields[14]));
                     AddressR.setText("Address: "+binaryToString(fields[3]));
+                    DescriptionR.setText(binaryToString(fields[14])+" room stay in for "+binaryToString(fields[15])+" nights.");
+                    NumberR.setText("1");
+                    PriceR.setText("$"+binaryToString(fields[17]));
+                    MoneyR1.setText("$"+binaryToString(fields[19]));
+                    TotalR.setText("$"+binaryToString(fields[18]));
+                    SubTotal1.setText("$"+binaryToString(fields[18]));
+                    SubTotal2.setText("$"+binaryToString(fields[18]));
+                    MoneyR2.setText("$"+binaryToString(fields[19]));
+                    MoneyR3.setText("$"+binaryToString(fields[19]));
+                    TaxR.setText("$"+binaryToString(fields[16]));
                     break; 
                 } else {
                     System.err.println("Insufficient fields in the binary data");
@@ -80,13 +113,14 @@ public class ReceiptPrinter {
         timeline.play();
     }
     
-    private String binaryToString(String binary) {//BINARY READER
-        StringBuilder text = new StringBuilder();
-        String[] binaryArray = binary.split(" ");
-        for (String binaryChar : binaryArray) {
-            int ascii = Integer.parseInt(binaryChar, 2);
-            text.append((char) ascii);
+    String binaryToString(String binary) {
+        StringBuilder result = new StringBuilder();
+        for (String binaryChar : binary.split(" ")) {
+            if (!binaryChar.isEmpty()) { // Add this check
+                int charCode = Integer.parseInt(binaryChar, 2);
+                result.append((char) charCode);
+            }
         }
-        return text.toString();
+        return result.toString();
     }
 }

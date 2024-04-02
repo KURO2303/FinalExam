@@ -50,12 +50,11 @@ public class Controller {
         String password = hiPass.getText();
         if (username.equals("DucK123") && password.equals("123456")){
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-                Parent root = loader.load();
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
+                Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
+                Scene mainScene = new Scene(mainInterface); 
+                Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+                window.setScene(mainScene);
+                window.show();
             } catch (IOException e) {}
         } else{
             try {
@@ -70,11 +69,6 @@ public class Controller {
     }
 
     @FXML
-    void CancelClicked2(ActionEvent event) throws IOException{
-
-    }
-
-    @FXML
     void OK1Clicked(ActionEvent event) throws IOException {
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("EI.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
@@ -86,15 +80,6 @@ public class Controller {
     @FXML
     void SendClicked(ActionEvent event) {
 
-    }
-
-    @FXML
-    void OK2Clicked(ActionEvent event) throws IOException {
-        Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
-        Scene mainScene = new Scene(mainInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(mainScene);
-        window.show();
     }
 
     @FXML

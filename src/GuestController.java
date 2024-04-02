@@ -45,6 +45,7 @@ public class GuestController {
     @FXML private RadioButton Other;
     
     private ToggleGroup toggleGroup;
+    private int USD;
 
     @FXML
     private void initialize() {
@@ -61,9 +62,29 @@ public class GuestController {
     void RoomReservationClicked(ActionEvent event) throws IOException {
         LocalDate startDate = Time1.getValue();
         LocalDate endDate = Time2.getValue();
+        double TotalPrice = 0;
+        double FinalPrice = 0;
+
+        String selectedRoomID = RoomID.getValue();
+        if (selectedRoomID != null) {
+            if (selectedRoomID.equals("Normal")) {
+                USD = 100;
+            } else if (selectedRoomID.equals("V.I.P.")) {
+                USD = 250; 
+            } else if (selectedRoomID.equals("Double Bed")) {
+                USD = 150; 
+            } else {
+                USD = 0; 
+            }
+        }
 
         long stayDuration = calculateStayDuration(startDate, endDate);
-        String[] guestInfo = new String[17];
+        TotalPrice = USD * stayDuration;
+        double tax = 0.15; 
+        double T = TotalPrice * tax;
+        FinalPrice = TotalPrice + T;
+
+        String[] guestInfo = new String[24];
         guestInfo[0] = FirstName.getText();
         guestInfo[1] = LastName.getText();
         guestInfo[2] = Zip.getText();
@@ -80,7 +101,11 @@ public class GuestController {
         guestInfo[13] = Country.getValue();
         guestInfo[14] = RoomID.getValue();
         guestInfo[15] = String.valueOf(stayDuration);
-        guestInfo[16] = Gender();
+        guestInfo[16] = String.valueOf(T);
+        guestInfo[17] = String.valueOf(USD);
+        guestInfo[18] = String.valueOf(TotalPrice);
+        guestInfo[19] = String.valueOf(FinalPrice);
+        guestInfo[20] = Gender();
         saveToFile(guestInfo);
 
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));

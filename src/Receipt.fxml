@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReceiptPrinter">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReceiptPrinter">
    <children>
       <AnchorPane layoutX="265.0" layoutY="167.0" prefHeight="32.0" prefWidth="244.0" style="-fx-background-color: #0f0f0f;">
          <children>
@@ -48,9 +48,9 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER_RIGHT" layoutX="360.0" layoutY="91.0" prefHeight="32.0" prefWidth="150.0" />
-      <TextField fx:id="MoneyR" alignment="CENTER_RIGHT" layoutX="266.0" layoutY="122.0" prefHeight="30.0" prefWidth="244.0" promptText="\$$$" />
-      <Label layoutX="272.0" layoutY="127.0" prefHeight="20.0" prefWidth="141.0" text="BALANCE DUE (USD)">
+      <TextField fx:id="NR" alignment="CENTER_RIGHT" layoutX="360.0" layoutY="91.0" prefHeight="32.0" prefWidth="150.0" />
+      <TextField fx:id="MoneyR1" alignment="CENTER_RIGHT" layoutX="266.0" layoutY="122.0" prefHeight="30.0" prefWidth="244.0" promptText="\$$$" />
+      <Label layoutX="267.0" layoutY="127.0" prefHeight="20.0" prefWidth="141.0" text="BALANCE DUE (USD)">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -72,7 +72,7 @@
       <Label layoutX="15.0" layoutY="202.0" prefHeight="18.0" prefWidth="230.0" text="1969 Masonic Drive, Broadview, MT, 59015" />
       <Label layoutX="15.0" layoutY="221.0" prefHeight="18.0" prefWidth="230.0" text="Phone: (+84)0898122323" />
       <Label layoutX="15.0" layoutY="239.0" prefHeight="18.0" prefWidth="230.0" text="Fax: +1-907-555-1234" />
-      <Label layoutX="14.0" layoutY="258.0" prefHeight="18.0" prefWidth="230.0" text="Website: www.BChotel.com" />
+      <Label layoutX="14.0" layoutY="258.0" prefHeight="18.0" prefWidth="230.0" text="Website: www.hotel123.com" />
       <Line endX="-101.70712280273438" endY="162.19998168945312" layoutX="367.0" layoutY="172.0" startX="-101.99996948242188" startY="-5.0" />
       <Line endX="-99.10000610351562" endY="167.39999389648438" layoutX="611.0" layoutY="167.0" startX="-99.10000610351562" startY="-3.5" />
       <Line endX="146.39999389648438" layoutX="365.0" layoutY="164.0" startX="-100.0" />
@@ -83,5 +83,88 @@
       <TextField fx:id="RoomR" layoutX="267.0" layoutY="306.0" prefHeight="26.0" prefWidth="244.0" promptText="Room" />
       <Line endX="145.39999389648438" endY="0.399993896484375" layoutX="366.0" layoutY="334.0" startX="-100.0" />
       <Line endX="145.39999389648438" endY="0.399993896484375" layoutX="366.0" layoutY="306.0" startX="-100.0" />
+      <Label alignment="BOTTOM_LEFT" layoutX="13.0" layoutY="357.0" prefHeight="35.0" prefWidth="230.0" style="-fx-background-color: #0f0f0f;" text="DESCRIPTION" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="BOTTOM_CENTER" layoutX="243.0" layoutY="357.0" prefHeight="35.0" prefWidth="68.0" style="-fx-background-color: #0f0f0f;" text="NUMBER" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="BOTTOM_CENTER" layoutX="311.0" layoutY="357.0" prefHeight="35.0" prefWidth="94.0" style="-fx-background-color: #0f0f0f;" text="PRICE" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="BOTTOM_CENTER" layoutX="405.0" layoutY="357.0" prefHeight="35.0" prefWidth="107.0" style="-fx-background-color: #0f0f0f;" text="TOTAL" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Line endX="-100.00001525878906" endY="93.19998168945312" layoutX="113.0" layoutY="358.0" startX="-100.0" />
+      <TextField fx:id="DescriptionR" layoutX="16.0" layoutY="393.0" prefHeight="26.0" prefWidth="224.0" />
+      <TextField fx:id="NumberR" alignment="CENTER" layoutX="246.0" layoutY="393.0" prefHeight="26.0" prefWidth="62.0" />
+      <TextField fx:id="PriceR" alignment="CENTER" layoutX="309.0" layoutY="393.0" prefHeight="26.0" prefWidth="94.0" />
+      <Line endX="-100.0" endY="61.5" layoutX="411.0" layoutY="358.0" startX="-100.0" />
+      <TextField fx:id="TotalR" alignment="CENTER" layoutX="406.0" layoutY="393.0" prefHeight="26.0" prefWidth="107.0" />
+      <Line endX="-100.0" endY="94.80001831054688" layoutX="612.0" layoutY="358.0" startX="-100.0" />
+      <Line endX="400.60003662109375" layoutX="112.0" layoutY="419.0" startX="-98.29287719726562" />
+      <Line endX="-100.0" endY="61.5" layoutX="343.0" layoutY="358.0" startX="-100.0" />
+      <Line endX="-100.0" endY="61.5" layoutX="503.0" layoutY="358.0" startX="-100.0" />
+      <Label alignment="BOTTOM_LEFT" layoutX="13.0" layoutY="418.0" prefHeight="35.0" prefWidth="500.0" style="-fx-background-color: #0f0f0f;" text="SUBTOTAL" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="SubTotal1" alignment="CENTER_RIGHT" layoutX="390.0" layoutY="436.0" prefHeight="18.0" prefWidth="118.0" textFill="WHITE" />
+      <Label alignment="BOTTOM_LEFT" layoutX="12.0" layoutY="472.0" prefHeight="35.0" prefWidth="193.0" style="-fx-background-color: #0f0f0f;" text="COMMENT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Line endX="-100.00001525878906" endY="143.0" layoutX="112.0" layoutY="473.0" startX="-100.0" />
+      <Label layoutX="17.0" layoutY="514.0" text="Due in 30 days upon receipt." />
+      <Label layoutX="17.0" layoutY="536.0" prefHeight="18.0" prefWidth="176.0" text="Make all check payable to: " />
+      <Label alignment="CENTER" layoutX="17.0" layoutY="554.0" prefHeight="18.0" prefWidth="118.0" text="Black Cat Hotel ">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="584.0" prefHeight="18.0" prefWidth="134.0" text="(e-pay: 0989091764)" />
+      <Line endX="-100.00001525878906" endY="143.0" layoutX="305.0" layoutY="473.0" startX="-100.0" />
+      <Line endX="93.70707702636719" endY="-0.29290771484375" layoutX="112.0" layoutY="617.0" startX="-99.29292297363281" startY="-0.29290771484375" />
+      <Label layoutX="15.0" layoutY="627.0" prefHeight="18.0" prefWidth="194.0" text="Thank you for choosing our hotel!">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="338.0" layoutY="490.0" prefHeight="18.0" prefWidth="68.0" text="SUBTOTAL">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="SubTotal2" alignment="CENTER" layoutX="406.0" layoutY="490.0" prefHeight="18.0" prefWidth="107.0" />
+      <Label layoutX="338.0" layoutY="514.0" prefHeight="18.0" prefWidth="176.0" text="TAX RATE                   15%" />
+      <Label layoutX="338.0" layoutY="535.0" prefHeight="18.0" prefWidth="55.0" text="TAX" />
+      <Label fx:id="TaxR" alignment="CENTER" layoutX="406.0" layoutY="536.0" prefHeight="18.0" prefWidth="107.0" />
+      <Label layoutX="338.0" layoutY="554.0" prefHeight="18.0" prefWidth="55.0" text="TOTAL">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="MoneyR2" alignment="CENTER" layoutX="405.0" layoutY="554.0" prefHeight="18.0" prefWidth="107.0" />
+      <Button layoutX="277.0" layoutY="651.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" text="Print" />
+      <Button layoutX="213.0" layoutY="651.0" mnemonicParsing="false" onAction="#CancelClicked2" prefHeight="26.0" prefWidth="55.0" text="Back" />
+      <Label alignment="CENTER" layoutX="338.0" layoutY="583.0" prefHeight="20.0" prefWidth="141.0" text="BALANCE DUE (in USD)">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Line endX="-72.99996948242188" endY="33.4000244140625" layoutX="405.0" layoutY="595.0" startX="-72.99996948242188" startY="1.20001220703125" />
+      <Line endX="-72.99996948242188" endY="33.4000244140625" layoutX="562.0" layoutY="595.0" startX="-72.99996948242188" startY="1.20001220703125" />
+      <Line endX="61.500030517578125" endY="-0.0999755859375" layoutX="428.0" layoutY="629.0" startX="-95.49996948242188" startY="-0.0999755859375" />
+      <Label fx:id="MoneyR3" alignment="CENTER" layoutX="342.0" layoutY="604.0" prefHeight="18.0" prefWidth="134.0" />
    </children>
 </AnchorPane>

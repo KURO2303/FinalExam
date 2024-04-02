@@ -147,7 +147,7 @@
                </toggleGroup>
             </RadioButton>
             <RadioButton fx:id="Female" layoutX="97.0" layoutY="5.0" mnemonicParsing="false" text="Female" toggleGroup="$toggleGroup" />
-            <RadioButton fx:id="Other" layoutX="171.0" layoutY="5.0" mnemonicParsing="false" text="Other" toggleGroup="$toggleGroup" />
+            <RadioButton fx:id="Other" layoutX="164.0" layoutY="5.0" mnemonicParsing="false" text="Other" toggleGroup="$toggleGroup" />
          </children>
       </AnchorPane>
    </children>
