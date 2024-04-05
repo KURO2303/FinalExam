@@ -14,7 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 public class ReceiptPrinter {
     @FXML private TextField AddressR;
@@ -38,7 +40,7 @@ public class ReceiptPrinter {
     @FXML private Label TaxR;
 
     @FXML
-    void AddClicked(ActionEvent event) throws IOException {
+    void AddClicked(ActionEvent event) throws IOException {//OPEN AR.fxml 
         Parent AddInterface = FXMLLoader.load(getClass().getResource("AR.fxml"));
         Scene AddScene = new Scene(AddInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -47,7 +49,7 @@ public class ReceiptPrinter {
     }
 
     @FXML
-    void CancelClicked2(ActionEvent event) throws IOException{
+    void CancelClicked2(ActionEvent event) throws IOException{//RETURN TO MI.fxml FROM Receipt.fxml
         Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
         Scene mainScene = new Scene(mainInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -56,7 +58,7 @@ public class ReceiptPrinter {
     }
 
     @FXML
-    void CancelClicked3(ActionEvent event) throws IOException {
+    void CancelClicked3(ActionEvent event) throws IOException {//RETURN TO WP.fxml FROM MI.fxml
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("WP.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -74,8 +76,8 @@ public class ReceiptPrinter {
     }
 
     @FXML
-    void FillClicked(ActionEvent event) throws IOException {//FILL GUEST INFORMATION
-        try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
+    void FillClicked(ActionEvent event) throws IOException {//FILL GUEST INFORMATION USING DATA IN GuestData.dat
+        try (BufferedReader reader = new BufferedReader(new FileReader("GuestData.dat"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -97,7 +99,7 @@ public class ReceiptPrinter {
                     TaxR.setText("$"+binaryToString(fields[16]));
                     break; 
                 } else {
-                    System.err.println("Insufficient fields in the binary data");
+                    System.err.println("Insufficient guest information, please check if guest is added or not");
                 }
             }
         } catch (IOException e) {}
@@ -114,8 +116,16 @@ public class ReceiptPrinter {
     }
 
     @FXML
-    void FinalClicked(ActionEvent event) {
-
+    void FinalClicked(ActionEvent event) throws IOException {//RETURN TO MI.fxml, DELETE DATA IN HotelData.dat AND DONE 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("HotelData.dat"))) {
+            String newData = "New Guest Added";
+            writer.write(newData);
+        } catch (IOException e) {}
+        Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
+        Scene mainScene = new Scene(mainInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(mainScene);
+        window.show();
     }
     
     String binaryToString(String binary) {//BINARY READER

@@ -15,7 +15,7 @@ public class Controller {
     @FXML private Button loginButton;
 
     @FXML
-    void LoginClicked(ActionEvent event) {
+    void LoginClicked(ActionEvent event) {//LOGIN CHECK
         String username = hiUser.getText();
         String password = hiPass.getText();
         if (username.equals("DucK123") && password.equals("123456")){
@@ -39,7 +39,7 @@ public class Controller {
     }
 
     @FXML
-    void CancelClicked1(ActionEvent event) throws IOException {
+    void CancelClicked1(ActionEvent event) throws IOException {//RETURN TO WP.fxml from EI.fxml
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("WP.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -48,7 +48,7 @@ public class Controller {
     }
 
     @FXML
-    void OK1Clicked(ActionEvent event) throws IOException {
+    void OK1Clicked(ActionEvent event) throws IOException {//RETURN TO EI.fxml FROM Invalid.fxml
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("EI.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -57,7 +57,7 @@ public class Controller {
     }
 
     @FXML
-    void BOOKClicked(ActionEvent event) throws IOException {
+    void BOOKClicked(ActionEvent event) throws IOException {//OPEN NewGuest.fxml
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("NewGuest.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -67,7 +67,7 @@ public class Controller {
 
     
     @FXML
-    void ListClicked(ActionEvent event) throws IOException {
+    void ListClicked(ActionEvent event) throws IOException {//OPEN RL.fxml
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("RL.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -76,7 +76,7 @@ public class Controller {
     }
 
     @FXML
-    void OK4Clicked(ActionEvent event) throws IOException {
+    void OK4Clicked(ActionEvent event) throws IOException {//OPEN GI.fxml
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -86,7 +86,7 @@ public class Controller {
 
     
     @FXML
-    void ViewClicked(ActionEvent event) throws IOException {
+    void ViewClicked(ActionEvent event) throws IOException {//OPEN RoomList.fxml
         Parent ViewInterface = FXMLLoader.load(getClass().getResource("RoomList.fxml"));
         Scene NewViewScene = new Scene(ViewInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -95,7 +95,7 @@ public class Controller {
     }
 
     @FXML
-    void XClicked(ActionEvent event) throws IOException {
+    void XClicked(ActionEvent event) throws IOException {//RETURN TO GI.fxml
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 

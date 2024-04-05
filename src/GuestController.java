@@ -59,7 +59,7 @@ public class GuestController {
     }
 
     @FXML
-    void RoomReservationClicked(ActionEvent event) throws IOException {
+    void RoomReservationClicked(ActionEvent event) throws IOException {//SAVE Guestinfo to HotelData.dat
         LocalDate startDate = Time1.getValue();
         LocalDate endDate = Time2.getValue();
         double TotalPrice = 0;

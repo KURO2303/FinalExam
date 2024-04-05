@@ -108,19 +108,26 @@ public class GuestHandle {
 
     
     @FXML
-    void AddGuestClicked(ActionEvent event) {
-
+    void AddGuestClicked(ActionEvent event) {//ADD GUEST INORMATION FROM HotelData.dat TO GuestData.dat
+        try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"));
+         BufferedWriter writer = new BufferedWriter(new FileWriter("GuestData.dat"))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            writer.write(line);
+            writer.newLine();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     }
 
     
     @FXML
-    void RejectClicked(ActionEvent event) throws IOException {//REJECT GUEST BOOKING
+    void RejectClicked(ActionEvent event) throws IOException {//REJECT GUEST BOOKING AND DELETE THAT GUEST INFORMATION IN HotelData.dat
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("HotelData.dat"))) {
             String newData = "cleared";
             writer.write(newData);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
 
     String binaryToString(String binary) {//BINARY READER
