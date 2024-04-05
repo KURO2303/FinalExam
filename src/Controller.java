@@ -4,45 +4,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class Controller {
-    @FXML
-    private TextField hiUser;
-    @FXML
-    private PasswordField hiPass;
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    void EmployeeClicked(ActionEvent event) throws IOException {
-        Parent employeeInterface = FXMLLoader.load(getClass().getResource("EI.fxml"));
-        Scene employeeScene = new Scene(employeeInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(employeeScene);
-        window.show();
-    }
-
-    @FXML
-    void GuestClicked(ActionEvent event) throws IOException {
-        Parent guestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
-        Scene guestScene = new Scene(guestInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(guestScene);
-        window.show();
-    }
-
-    @FXML
-    void CancelClicked1(ActionEvent event) throws IOException {
-        Parent employeeInterface = FXMLLoader.load(getClass().getResource("WP.fxml"));
-        Scene employeeScene = new Scene(employeeInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(employeeScene);
-        window.show();
-    }
+    @FXML private TextField hiUser;
+    @FXML private PasswordField hiPass;
+    @FXML private Button loginButton;
 
     @FXML
     void LoginClicked(ActionEvent event) {
@@ -69,6 +39,15 @@ public class Controller {
     }
 
     @FXML
+    void CancelClicked1(ActionEvent event) throws IOException {
+        Parent employeeInterface = FXMLLoader.load(getClass().getResource("WP.fxml"));
+        Scene employeeScene = new Scene(employeeInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(employeeScene);
+        window.show();
+    }
+
+    @FXML
     void OK1Clicked(ActionEvent event) throws IOException {
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("EI.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
@@ -78,17 +57,7 @@ public class Controller {
     }
 
     @FXML
-    void SendClicked(ActionEvent event) {
-
-    }
-
-    @FXML
     void Send1Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
-    void OK3Clicked(ActionEvent event) {
 
     }
 

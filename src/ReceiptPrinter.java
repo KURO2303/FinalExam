@@ -112,11 +112,16 @@ public class ReceiptPrinter {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
+    @FXML
+    void FinalClicked(ActionEvent event) {
+
+    }
     
-    String binaryToString(String binary) {
+    String binaryToString(String binary) {//BINARY READER
         StringBuilder result = new StringBuilder();
         for (String binaryChar : binary.split(" ")) {
-            if (!binaryChar.isEmpty()) { // Add this check
+            if (!binaryChar.isEmpty()) { 
                 int charCode = Integer.parseInt(binaryChar, 2);
                 result.append((char) charCode);
             }

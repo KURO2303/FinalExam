@@ -87,7 +87,7 @@ public class GuestController {
         String[] guestInfo = new String[24];
         guestInfo[0] = FirstName.getText();
         guestInfo[1] = LastName.getText();
-        guestInfo[2] = Zip.getText();
+        guestInfo[2] = Gender();
         guestInfo[3] = Address.getText();
         guestInfo[4] = ID.getText();
         guestInfo[5] = City.getText();
@@ -105,7 +105,7 @@ public class GuestController {
         guestInfo[17] = String.valueOf(USD);
         guestInfo[18] = String.valueOf(TotalPrice);
         guestInfo[19] = String.valueOf(FinalPrice);
-        guestInfo[20] = Gender();
+        guestInfo[20] = Zip.getText();
         saveToFile(guestInfo);
 
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));

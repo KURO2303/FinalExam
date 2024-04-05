@@ -20,7 +20,7 @@
          </children></AnchorPane>
       <TextField fx:id="NameR" layoutX="264.0" layoutY="198.0" prefHeight="26.0" prefWidth="247.0" promptText="Name" />
       <TextField fx:id="PhoneR" layoutX="265.0" layoutY="280.0" prefHeight="26.0" prefWidth="246.0" promptText="0123456789" />
-      <TextField fx:id="EmailR" layoutX="265.0" layoutY="226.0" prefHeight="26.0" prefWidth="247.0" promptText="123@gmail.com" />
+      <TextField fx:id="EmailR" layoutX="266.0" layoutY="224.0" prefHeight="30.0" prefWidth="247.0" promptText="123@gmail.com" />
       <TextField fx:id="AddressR" layoutX="265.0" layoutY="254.0" prefHeight="26.0" prefWidth="246.0" promptText="example" />
       <ImageView fitHeight="118.0" fitWidth="130.0" layoutX="53.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -155,7 +155,7 @@
          </font>
       </Label>
       <Label fx:id="MoneyR2" alignment="CENTER" layoutX="405.0" layoutY="554.0" prefHeight="18.0" prefWidth="107.0" />
-      <Button layoutX="277.0" layoutY="651.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" text="Print" />
+      <Button layoutX="277.0" layoutY="651.0" mnemonicParsing="false" onAction="#FinalClicked" prefHeight="26.0" prefWidth="55.0" text="Print" />
       <Button layoutX="213.0" layoutY="651.0" mnemonicParsing="false" onAction="#CancelClicked2" prefHeight="26.0" prefWidth="55.0" text="Back" />
       <Label alignment="CENTER" layoutX="338.0" layoutY="583.0" prefHeight="20.0" prefWidth="141.0" text="BALANCE DUE (in USD)">
          <font>
