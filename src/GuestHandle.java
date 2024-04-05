@@ -22,10 +22,9 @@ public class GuestHandle {
     @FXML private TextField PhoneAR;
     @FXML private TextField TimeAR;
     @FXML private TextField DesAR;
-    private boolean Rejected = false;
 
     @FXML
-    void EmployeeClicked(ActionEvent event) throws IOException {
+    void EmployeeClicked(ActionEvent event) throws IOException {//OPEN EI.fxml
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("EI.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -34,24 +33,39 @@ public class GuestHandle {
     }
 
     @FXML
-    void GuestClicked(ActionEvent event) throws IOException {
-        if (Rejected==true) {
-            Parent sorryInterface = FXMLLoader.load(getClass().getResource("Sorry.fxml"));
-            Scene sorryScene = new Scene(sorryInterface);
-            Stage window = (Stage)((Button) event.getSource()).getScene().getWindow();
-            window.setScene(sorryScene);
+    void GuestClicked(ActionEvent event) throws IOException {//CHECK TO OPEN Sorry.fxml OR GI.fxml
+        if(Rejected()){
+            Parent SorryInterface = FXMLLoader.load(getClass().getResource("Sorry.fxml"));
+            Scene SorryScene = new Scene(SorryInterface); 
+            Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+            window.setScene(SorryScene);
             window.show();
-        } else {
-            Parent guestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
-            Scene guestScene = new Scene(guestInterface);
-            Stage window = (Stage)((Button) event.getSource()).getScene().getWindow();
-            window.setScene(guestScene);
+        } else{
+            Parent GuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
+            Scene GuestScene = new Scene(GuestInterface); 
+            Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+            window.setScene(GuestScene);
             window.show();
         }
     }
 
+    private boolean Rejected() {//HELP TO OPEN Sorry.fxml
+        try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().equals("cleared")) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
     @FXML
-    void OK3Clicked(ActionEvent event) throws IOException {
+    void OK3Clicked(ActionEvent event) throws IOException {//TO OPEN GI.fxml FROM Sorry.fxml
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -60,7 +74,7 @@ public class GuestHandle {
     }
 
     @FXML
-    void Clicked(ActionEvent event) throws IOException {
+    void Clicked(ActionEvent event) throws IOException {//FILL GUEST INFO TO ADD OR REJECT THEIR BOOKING
         try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -84,7 +98,7 @@ public class GuestHandle {
     }
 
     @FXML
-    void X3Clicked(ActionEvent event) throws IOException {
+    void X3Clicked(ActionEvent event) throws IOException {//RETURN TO MI.fxml FROM AR.fxml
         Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
         Scene mainScene = new Scene(mainInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -102,17 +116,11 @@ public class GuestHandle {
     @FXML
     void RejectClicked(ActionEvent event) throws IOException {//REJECT GUEST BOOKING
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("HotelData.dat"))) {
-            String newData = "  ";
+            String newData = "cleared";
             writer.write(newData);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Rejected = true;
-        Parent sorryInterface = FXMLLoader.load(getClass().getResource("SorryG.fxml"));
-        Scene sorryScene = new Scene(sorryInterface);
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow();
-        window.setScene(sorryScene);
-        window.show();
     }
 
     String binaryToString(String binary) {//BINARY READER
@@ -125,5 +133,4 @@ public class GuestHandle {
         }
         return result.toString();
     }
-
 }

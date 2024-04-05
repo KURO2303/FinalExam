@@ -57,11 +57,6 @@ public class Controller {
     }
 
     @FXML
-    void Send1Clicked(ActionEvent event) {
-
-    }
-
-    @FXML
     void BOOKClicked(ActionEvent event) throws IOException {
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("NewGuest.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
