@@ -68,11 +68,18 @@ public class ReceiptPrinter {
 
     @FXML
     void PrintClicked(ActionEvent event) throws IOException {//TO OPEN RECEIPT.FXML
+        if(NoGuest()){
+            Parent root = FXMLLoader.load(getClass().getResource("NoInfo.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }else{
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("Receipt.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(employeeScene);
         window.show();
+        }
     }
 
     @FXML
@@ -137,5 +144,14 @@ public class ReceiptPrinter {
             }
         }
         return result.toString();
+    }
+
+    private boolean NoGuest(){
+        try (BufferedReader reader = new BufferedReader(new FileReader("GuestData.dat"))) {
+            return reader.readLine() == null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

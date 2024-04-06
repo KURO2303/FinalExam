@@ -85,7 +85,7 @@ public class Controller {
     }
 
     @FXML
-    void OkClose1Clicked(ActionEvent event) throws IOException {//CLOSE NoNewGuest.fxml
+    void OKClose1Clicked(ActionEvent event) throws IOException {//CLOSE NoNewGuest.fxml
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
     }
@@ -103,12 +103,18 @@ public class Controller {
     }
 
     @FXML
-    void OKClose4Clicked(ActionEvent event) throws IOException {//
+    void OKClose4Clicked(ActionEvent event) throws IOException {//CLOSE Added.fxml AND OPEN MI.fxml
         Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
         Scene mainScene = new Scene(mainInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(mainScene);
         window.show();
+    }
+    
+    @FXML
+    void OKClose5Clicked(ActionEvent event) {//TO CLOSE NoInfo.fxml
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML

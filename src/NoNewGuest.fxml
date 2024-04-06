@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="325.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <ImageView fitHeight="181.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
@@ -25,6 +24,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="146.0" layoutY="220.0" mnemonicParsing="false" onAction="#OkClose1Clicked" text="OK" />
+      <Button layoutX="146.0" layoutY="220.0" mnemonicParsing="false" onAction="#OKClose1Clicked" text="OK" />
    </children>
 </AnchorPane>
