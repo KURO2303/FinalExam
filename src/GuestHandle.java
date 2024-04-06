@@ -35,10 +35,14 @@ public class GuestHandle {
     @FXML
     void GuestClicked(ActionEvent event) throws IOException {//CHECK TO OPEN Sorry.fxml OR GI.fxml
         if(Rejected()){
-            Parent SorryInterface = FXMLLoader.load(getClass().getResource("Sorry.fxml"));
-            Scene SorryScene = new Scene(SorryInterface); 
+            Parent root = FXMLLoader.load(getClass().getResource("Sorry.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            Parent GuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
+            Scene GuestScene = new Scene(GuestInterface); 
             Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-            window.setScene(SorryScene);
+            window.setScene(GuestScene);
             window.show();
         } else{
             Parent GuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
@@ -65,12 +69,9 @@ public class GuestHandle {
 
 
     @FXML
-    void OK3Clicked(ActionEvent event) throws IOException {//TO OPEN GI.fxml FROM Sorry.fxml
-        Parent employeeInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
-        Scene employeeScene = new Scene(employeeInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(employeeScene);
-        window.show();
+    void OK3Clicked(ActionEvent event) throws IOException {//TO CLOSE Sorry.fxml
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML

@@ -15,9 +15,9 @@
             <Image url="@475472037.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="14.0" layoutY="253.0" mnemonicParsing="false" onAction="#BOOKClicked" prefHeight="26.0" prefWidth="138.0" text="Book a room" />
-      <Button layoutX="14.0" layoutY="216.0" mnemonicParsing="false" onAction="#ListClicked" prefHeight="26.0" prefWidth="138.0" text="Room List" />
-      <Button layoutX="14.0" layoutY="179.0" mnemonicParsing="false" onAction="#ViewClicked" prefHeight="26.0" prefWidth="138.0" text="View Room" />
+      <Button layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#BOOKClicked" prefHeight="26.0" prefWidth="138.0" text="Book a room" />
+      <Button layoutX="14.0" layoutY="253.0" mnemonicParsing="false" onAction="#CancelBookingClicked" prefHeight="26.0" prefWidth="138.0" text="Cancel Booking" />
+      <Button layoutX="14.0" layoutY="172.0" mnemonicParsing="false" onAction="#ViewClicked" prefHeight="26.0" prefWidth="138.0" text="View Room" />
       <ImageView fitHeight="130.0" fitWidth="138.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pngtree-cat-default-avatar-png-image_5416936.jpg" />

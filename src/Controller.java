@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class Controller {
     @FXML private TextField hiUser;
@@ -65,14 +69,57 @@ public class Controller {
         window.show();
     }
 
-    
     @FXML
-    void ListClicked(ActionEvent event) throws IOException {//OPEN RL.fxml
-        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("RL.fxml"));
-        Scene NewGuestScene = new Scene(NewGuestInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(NewGuestScene);
-        window.show();
+    void CancelBookingClicked(ActionEvent event) throws IOException {//CHECKING FOR CANCEL BOOKING
+        if(CancelBooking()){
+            Parent root = FXMLLoader.load(getClass().getResource("NoNewGuest.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } else {
+            Parent root = FXMLLoader.load(getClass().getResource("YouSure.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+    }
+
+    @FXML
+    void OkClose1Clicked(ActionEvent event) throws IOException {//CLOSE NoNewGuest.fxml
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void OKClose2Clicked(ActionEvent event) throws IOException {//TO CLOSE SorryG.fxml
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void OKClose3Clicked(ActionEvent event) {//TO CLOSE InvalidGuest.fxml
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void SureNoClicked(ActionEvent event) {//CLOSE YouSure.fxml
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void SureYesClicked(ActionEvent event) throws IOException {//CLOSE YouSure.fxml AND DELETE GUEST INFO, OPEN SorryG.fxml
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("HotelData.dat"))) {
+            String newData = "";
+            writer.write(newData);
+        } catch (IOException e) {}
+        Parent root = FXMLLoader.load(getClass().getResource("SorryG.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        Stage ThisStage = (Stage)((Button) event.getSource()).getScene().getWindow();
+        ThisStage.close();
     }
 
     @FXML
@@ -101,6 +148,15 @@ public class Controller {
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(NewGuestScene);
         window.show();
+    }
+
+    private boolean CancelBooking() {//HELP TO OPEN YouSure.fxml
+        try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
+            return reader.readLine() == null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 

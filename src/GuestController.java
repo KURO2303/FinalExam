@@ -64,59 +64,85 @@ public class GuestController {
         LocalDate endDate = Time2.getValue();
         double TotalPrice = 0;
         double FinalPrice = 0;
-
-        String selectedRoomID = RoomID.getValue();
-        if (selectedRoomID != null) {
-            if (selectedRoomID.equals("Normal")) {
-                USD = 100;
-            } else if (selectedRoomID.equals("V.I.P.")) {
-                USD = 250; 
-            } else if (selectedRoomID.equals("Double Bed")) {
-                USD = 150; 
-            } else {
-                USD = 0; 
+        if (!MissInfo(startDate, endDate)) {
+            Parent root = FXMLLoader.load(getClass().getResource("InvalidGuest.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } else {
+            String selectedRoomID = RoomID.getValue();
+            if (selectedRoomID != null) {//TO GET VALUE OF MONEY DECIDE ON WHICH ROOM WAS CHOSEN
+                if (selectedRoomID.equals("Normal")) {
+                    USD = 100;
+                } else if (selectedRoomID.equals("V.I.P.")) {
+                    USD = 250; 
+                } else if (selectedRoomID.equals("Double Bed")) {
+                    USD = 150; 
+                } else {
+                    USD = 0; 
+                }
             }
+    
+            long stayDuration = calculateStayDuration(startDate, endDate);//CACULATE MONEY
+            TotalPrice = USD * stayDuration;
+            double tax = 0.15; 
+            double T = TotalPrice * tax;
+            FinalPrice = TotalPrice + T;
+    
+            String[] guestInfo = new String[24];
+            guestInfo[0] = FirstName.getText();
+            guestInfo[1] = LastName.getText();
+            guestInfo[2] = Gender();
+            guestInfo[3] = Address.getText();
+            guestInfo[4] = ID.getText();
+            guestInfo[5] = City.getText();
+            guestInfo[6] = Email.getText();
+            guestInfo[7] = NAdults.getText();
+            guestInfo[8] = NChild.getText();
+            guestInfo[9] = Phone.getText();
+            guestInfo[10] = Time1.getValue().toString();
+            guestInfo[11] = Time2.getValue().toString();
+            guestInfo[12] = Region.getValue();
+            guestInfo[13] = Country.getValue();
+            guestInfo[14] = RoomID.getValue();
+            guestInfo[15] = String.valueOf(stayDuration);
+            guestInfo[16] = String.valueOf(T);
+            guestInfo[17] = String.valueOf(USD);
+            guestInfo[18] = String.valueOf(TotalPrice);
+            guestInfo[19] = String.valueOf(FinalPrice);
+            guestInfo[20] = Zip.getText();
+            saveToFile(guestInfo);
+    
+            Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
+            Scene NewGuestScene = new Scene(NewGuestInterface); 
+            Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+            window.setScene(NewGuestScene);
+            window.show();
         }
+    }
 
-        long stayDuration = calculateStayDuration(startDate, endDate);
-        TotalPrice = USD * stayDuration;
-        double tax = 0.15; 
-        double T = TotalPrice * tax;
-        FinalPrice = TotalPrice + T;
-
-        String[] guestInfo = new String[24];
-        guestInfo[0] = FirstName.getText();
-        guestInfo[1] = LastName.getText();
-        guestInfo[2] = Gender();
-        guestInfo[3] = Address.getText();
-        guestInfo[4] = ID.getText();
-        guestInfo[5] = City.getText();
-        guestInfo[6] = Email.getText();
-        guestInfo[7] = NAdults.getText();
-        guestInfo[8] = NChild.getText();
-        guestInfo[9] = Phone.getText();
-        guestInfo[10] = Time1.getValue().toString();
-        guestInfo[11] = Time2.getValue().toString();
-        guestInfo[12] = Region.getValue();
-        guestInfo[13] = Country.getValue();
-        guestInfo[14] = RoomID.getValue();
-        guestInfo[15] = String.valueOf(stayDuration);
-        guestInfo[16] = String.valueOf(T);
-        guestInfo[17] = String.valueOf(USD);
-        guestInfo[18] = String.valueOf(TotalPrice);
-        guestInfo[19] = String.valueOf(FinalPrice);
-        guestInfo[20] = Zip.getText();
-        saveToFile(guestInfo);
-
-        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
-        Scene NewGuestScene = new Scene(NewGuestInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(NewGuestScene);
-        window.show();
+    private boolean MissInfo(LocalDate startDate, LocalDate endDate) {//CHECK IF THE GUEST INPUT THEIR INFORMATION CORRECTLY
+        return !FirstName.getText().isEmpty() && 
+               !LastName.getText().isEmpty() &&
+               !Gender().isEmpty() &&
+               !Address.getText().isEmpty() &&
+               !ID.getText().isEmpty() &&
+               !City.getText().isEmpty() &&
+               !Email.getText().isEmpty() &&
+               !NAdults.getText().isEmpty() &&
+               !NChild.getText().isEmpty() &&
+               !Phone.getText().isEmpty() &&
+               startDate != null &&
+               endDate != null &&
+               Region.getValue() != null &&
+               Country.getValue() != null &&
+               RoomID.getValue() != null &&
+               (Male.isSelected() || Female.isSelected() || Other.isSelected()) &&
+               startDate.isBefore(endDate); 
     }
 
     @FXML
-    void X2Clicked(ActionEvent event) throws IOException {
+    void X2Clicked(ActionEvent event) throws IOException {//RETURN TO GI.fxml
         Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
@@ -124,7 +150,7 @@ public class GuestController {
         window.show();
     }
 
-    private void saveToFile(String[] guestInfo) {
+    private void saveToFile(String[] guestInfo) {//METHOD TO SAVE GUEST INFO TO HotelData.dat
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("HotelData.dat", true)))) {
             for (String info : guestInfo) {
                 if (info != null) {
@@ -140,7 +166,7 @@ public class GuestController {
     }
     
 
-    private String stringToBinary(String str) {
+    private String stringToBinary(String str) {//BINARY READER
         StringBuilder binary = new StringBuilder();
         for (char c : str.toCharArray()) {
             String binaryChar = Integer.toBinaryString(c);
@@ -149,11 +175,11 @@ public class GuestController {
         return binary.toString();
     }
     
-    private long calculateStayDuration(LocalDate startDate, LocalDate endDate) {
+    private long calculateStayDuration(LocalDate startDate, LocalDate endDate) {//METHOD TO CACULATE HOW MANY NIGHTS THE GUEST DECIDED TO STAY
         return ChronoUnit.DAYS.between(startDate, endDate);
     }
 
-    private String Gender() {
+    private String Gender() {//OPERATING RATIO BUTTON 
         if (Male.isSelected()) {
             return "Male";
     } else if (Female.isSelected()) {
@@ -163,5 +189,5 @@ public class GuestController {
     } else {
             return "";
     }
-}
+    }
 }
