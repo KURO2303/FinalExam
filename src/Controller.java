@@ -97,9 +97,18 @@ public class Controller {
     }
 
     @FXML
-    void OKClose3Clicked(ActionEvent event) {//TO CLOSE InvalidGuest.fxml
+    void OKClose3Clicked(ActionEvent event) throws IOException {//TO CLOSE InvalidGuest.fxml
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    void OKClose4Clicked(ActionEvent event) throws IOException {//
+        Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
+        Scene mainScene = new Scene(mainInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(mainScene);
+        window.show();
     }
 
     @FXML

@@ -121,7 +121,7 @@ public class ReceiptPrinter {
             String newData = "New Guest Added";
             writer.write(newData);
         } catch (IOException e) {}
-        Parent mainInterface = FXMLLoader.load(getClass().getResource("MI.fxml"));
+        Parent mainInterface = FXMLLoader.load(getClass().getResource("Added.fxml"));
         Scene mainScene = new Scene(mainInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(mainScene);
