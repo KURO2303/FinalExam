@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="218.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <AnchorPane layoutX="10.0" layoutY="165.0" prefHeight="26.0" prefWidth="290.0">
          <children>
@@ -21,22 +21,22 @@
             <Image url="@pngtree-cat-default-avatar-png-image_5416936.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="155.0" layoutY="41.0" prefHeight="18.0" prefWidth="72.0" text="Username: ">
+      <Label layoutX="155.0" layoutY="41.0" prefHeight="20.0" prefWidth="79.0" text="Username: ">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="155.0" layoutY="85.0" prefHeight="18.0" prefWidth="72.0" text="Password:">
+      <Label layoutX="155.0" layoutY="85.0" prefHeight="20.0" prefWidth="79.0" text="Password:">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="hiUser" layoutX="226.0" layoutY="39.0" prefHeight="26.0" prefWidth="348.0" />
+      <TextField fx:id="hiUser" layoutX="238.0" layoutY="38.0" prefHeight="26.0" prefWidth="348.0" />
       <AnchorPane layoutX="300.0" layoutY="165.0" prefHeight="26.0" prefWidth="290.0">
          <children>
             <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#LoginClicked" prefHeight="26.0" prefWidth="290.0" text="Login" />
          </children>
       </AnchorPane>
-      <PasswordField fx:id="hiPass" layoutX="227.0" layoutY="83.0" prefHeight="26.0" prefWidth="348.0" />
+      <PasswordField fx:id="hiPass" layoutX="238.0" layoutY="82.0" prefHeight="26.0" prefWidth="348.0" />
    </children>
 </AnchorPane>

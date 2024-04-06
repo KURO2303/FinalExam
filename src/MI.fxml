@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReceiptPrinter">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="739.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReceiptPrinter">
    <children>
       <Button layoutX="15.0" layoutY="52.0" mnemonicParsing="false" onAction="#AddClicked" prefHeight="26.0" prefWidth="154.0" text="Add" />
       <ImageView fitHeight="169.0" fitWidth="171.0" layoutX="8.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
@@ -21,7 +21,7 @@
             <Image url="@pngtree-cat-default-avatar-png-image_5416936.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="372.0" fitWidth="556.0" layoutX="185.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="382.0" fitWidth="556.0" layoutX="185.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@475472037.jpg" />
          </image>

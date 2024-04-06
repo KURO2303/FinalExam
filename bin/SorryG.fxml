@@ -6,8 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="384.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <AnchorPane layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="386.0">
          <children>
@@ -26,7 +25,7 @@
             <Label layoutX="99.0" layoutY="78.0" prefHeight="18.0" prefWidth="206.0" style="-fx-background-color: #20120F;" text="We hope to see you again at our " textFill="#faf5f5" />
             <Label layoutX="99.0" layoutY="97.0" prefHeight="18.0" prefWidth="194.0" style="-fx-background-color: #20120F;" text="hotel in the near future." textFill="#f7f2f2" />
             <Label layoutX="143.0" layoutY="116.0" prefHeight="18.0" prefWidth="149.0" text="Best regard, Black Cat Hotel" textFill="#efe6e6" />
-            <Button layoutX="345.0" layoutY="317.0" mnemonicParsing="false" onAction="#OKClose2Clicked" text="OK" />
+            <Button layoutX="339.0" layoutY="310.0" mnemonicParsing="false" onAction="#OKClose2Clicked" text="OK" />
             <Label layoutX="99.0" layoutY="53.0" prefHeight="18.0" prefWidth="206.0" text="your booking at our hotel." textFill="WHITE" />
          </children>
       </AnchorPane>
