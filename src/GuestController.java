@@ -38,7 +38,7 @@ public class GuestController {
     @FXML private DatePicker Time1;
     @FXML private DatePicker Time2;
     @FXML private ChoiceBox<String> Region;
-    @FXML private ChoiceBox<String> RoomID;
+    @FXML public ChoiceBox<String> RoomID;
     @FXML private ChoiceBox<String> Country;
     @FXML private RadioButton Female;
     @FXML private RadioButton Male;
@@ -165,7 +165,6 @@ public class GuestController {
         }
     }
     
-
     private String stringToBinary(String str) {//BINARY READER
         StringBuilder binary = new StringBuilder();
         for (char c : str.toCharArray()) {

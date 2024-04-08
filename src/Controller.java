@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -21,10 +22,7 @@ public class Controller {
     @FXML private Label DoubleBedRoom;
     @FXML private Label NormalRoom;
     @FXML private Label VipRoom;
-
-    private int NormalN = 5;
-    private int DoubleBedN = 7;
-    private int VipN = 2;
+    @FXML public ChoiceBox<String> RoomID;
 
     @FXML
     void LoginClicked(ActionEvent event) {//LOGIN CHECK
@@ -122,15 +120,6 @@ public class Controller {
     }
 
     @FXML
-    void XClicked(ActionEvent event) throws IOException {//RETURN TO GI.fxml
-        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
-        Scene NewGuestScene = new Scene(NewGuestInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(NewGuestScene);
-        window.show();
-    }
-
-    @FXML
     void CancelClicked1(ActionEvent event) throws IOException {//RETURN TO WP.fxml from EI.fxml
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("WP.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
@@ -164,8 +153,8 @@ public class Controller {
     }
 
     @FXML
-    void BOOKClicked(ActionEvent event) throws IOException {//OPEN NewGuest.fxml
-        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("NewGuest.fxml"));
+    void XClicked(ActionEvent event) throws IOException {//RETURN TO GI.fxml
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(NewGuestScene);
@@ -173,10 +162,44 @@ public class Controller {
     }
 
     @FXML
-    void ReClicked(ActionEvent event) {//SHOW NUMBER OF ROOM AVAILABLE AT THE MOMENT
-        NormalRoom.setText(String.valueOf(NormalN));
-        DoubleBedRoom.setText(String.valueOf(DoubleBedN));
-        VipRoom.setText(String.valueOf(VipN));
+    void ReClicked(ActionEvent event){//SHOW NUMBER OF ROOM AVAILABLE AT THE MOMENT
+        int NormalN = 5; 
+        int DoubleBedN = 7; 
+        int VipN = 2; 
+    try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] guestInfo = line.split(",");
+            if (guestInfo.length >= 15) { 
+                String roomType = binaryToString(guestInfo[14]);
+                switch (roomType) {
+                    case "Normal":
+                        NormalN--;
+                        break;
+                    case "Double Bed":
+                        DoubleBedN--;
+                        break;
+                    case "V.I.P.":
+                        VipN--;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    } catch (IOException e) {}
+    NormalRoom.setText(String.valueOf(NormalN) + " rooms");
+    DoubleBedRoom.setText(String.valueOf(DoubleBedN) + " rooms");
+    VipRoom.setText(String.valueOf(VipN) + " rooms");
+    }
+
+    @FXML
+    void BOOKClicked(ActionEvent event) throws IOException {//OPEN NewGuest.fxml
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("NewGuest.fxml"));
+        Scene NewGuestScene = new Scene(NewGuestInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(NewGuestScene);
+        window.show();
     }
 
     private boolean CancelBooking() {//HELP TO OPEN YouSure.fxml
@@ -186,6 +209,17 @@ public class Controller {
             e.printStackTrace();
             return false;
         }
+    }
+
+    String binaryToString(String binary) {//BINARY READER
+        StringBuilder result = new StringBuilder();
+        for (String binaryChar : binary.split(" ")) {
+            if (!binaryChar.isEmpty()) { 
+                int charCode = Integer.parseInt(binaryChar, 2);
+                result.append((char) charCode);
+            }
+        }
+        return result.toString();
     }
 }
 

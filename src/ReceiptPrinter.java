@@ -146,7 +146,7 @@ public class ReceiptPrinter {
         return result.toString();
     }
 
-    private boolean NoGuest(){
+    private boolean NoGuest(){//CHECK IF GUEST ADDED OR NOT
         try (BufferedReader reader = new BufferedReader(new FileReader("GuestData.dat"))) {
             return reader.readLine() == null;
         } catch (IOException e) {
