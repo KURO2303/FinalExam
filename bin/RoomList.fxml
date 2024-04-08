@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="540.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="345.0" prefWidth="540.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Normal">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="540.0">
                      <children>
                         <ImageView fitHeight="219.0" fitWidth="340.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@cac-loai-giuong-khach-san-2.jpg" />
                            </image>
                         </ImageView>
+                        <Label layoutX="358.0" layoutY="14.0" prefHeight="18.0" prefWidth="132.0" text="Room Type: Normal" />
+                        <Label layoutX="358.0" layoutY="51.0" prefHeight="18.0" prefWidth="138.0" text="Price: $100 per night" />
+                        <Label layoutX="358.0" layoutY="97.0" text="Available: " />
+                        <Label fx:id="NormalRoom" layoutX="413.0" layoutY="97.0" prefHeight="18.0" prefWidth="110.0" />
+                        <Label layoutY="226.0" prefHeight="18.0" prefWidth="540.0" text="Our Normal rooms offer a comfortable and welcoming retreat for travelers seeking a restful stay. " />
+                        <Label layoutY="244.0" prefHeight="18.0" prefWidth="540.0" text="Designed with simplicity and functionality in mind, each standard room is tastefully furnished and " />
+                        <Label layoutY="262.0" prefHeight="18.0" prefWidth="540.0" text="thoughtfully appointed to ensure a pleasant experience for our guests." />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -27,11 +35,18 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="218.0" fitWidth="338.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="203.0" fitWidth="327.0" layoutX="11.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@chan-ga-goi-dem-khach-san-007-12082015.jpg" />
                            </image>
                         </ImageView>
+                        <Label layoutX="356.0" layoutY="28.0" prefHeight="18.0" prefWidth="132.0" text="Room Type: Double Bed" />
+                        <Label layoutX="356.0" layoutY="69.0" prefHeight="18.0" prefWidth="138.0" text="Price: $150 per night" />
+                        <Label layoutX="356.0" layoutY="105.0" text="Available: " />
+                        <Label fx:id="DoubleBedRoom" layoutX="410.0" layoutY="104.0" prefHeight="18.0" prefWidth="110.0" />
+                        <Label layoutY="218.0" prefHeight="18.0" prefWidth="540.0" text="Our Double Bed rooms provide a spacious and inviting accommodation option for couples, families," />
+                        <Label layoutY="236.0" prefHeight="18.0" prefWidth="540.0" text="or individuals seeking extra comfort during their stay. Featuring modern amenities and elegant design" />
+                        <Label layoutY="254.0" text="touches, these rooms are designed to ensure a relaxing and memorable experience for our guests." />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -44,6 +59,14 @@
                               <Image url="@chat-lieu-thuong-su-dung-de-san-xuat-giuong-ngu-khach-san-5-sao-1.jpg" />
                            </image>
                         </ImageView>
+                        <Label fx:id="VipRoom" layoutX="390.0" layoutY="102.0" prefHeight="18.0" prefWidth="110.0" />
+                        <Label layoutX="336.0" layoutY="30.0" prefHeight="18.0" prefWidth="132.0" text="Room Type: Double Bed" />
+                        <Label layoutX="336.0" layoutY="67.0" prefHeight="18.0" prefWidth="138.0" text="Price: $250 per night" />
+                        <Label layoutX="336.0" layoutY="103.0" text="Available: " />
+                        <Label layoutY="235.0" text="Our VIP rooms epitomize luxury and sophistication, offering discerning guests an unparalleled level of " />
+                        <Label layoutY="253.0" prefHeight="18.0" prefWidth="540.0" text="comfort, style, and personalized service. Designed for those seeking an exceptional hotel experience," />
+                        <Label layoutY="275.0" prefHeight="18.0" prefWidth="540.0" text="our VIP rooms redefine hospitality with their exquisite design, exclusive amenities, and attention to " />
+                        <Label layoutY="294.0" text="detail." />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -54,5 +77,6 @@
             <Button layoutY="2.0" mnemonicParsing="false" onAction="#XClicked" prefHeight="30.4" prefWidth="30.4" text="X" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
+      <Button layoutX="480.0" layoutY="-2.0" mnemonicParsing="false" onAction="#ReClicked" prefHeight="30.0" prefWidth="30.0" text="O" />
    </children>
 </AnchorPane>

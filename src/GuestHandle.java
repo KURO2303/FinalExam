@@ -67,7 +67,6 @@ public class GuestHandle {
         return false;
     }
 
-
     @FXML
     void OK3Clicked(ActionEvent event) throws IOException {//TO CLOSE Sorry.fxml
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

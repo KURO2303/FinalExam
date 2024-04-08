@@ -4,19 +4,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Controller {
     @FXML private TextField hiUser;
     @FXML private PasswordField hiPass;
     @FXML private Button loginButton;
+    @FXML private Label DoubleBedRoom;
+    @FXML private Label NormalRoom;
+    @FXML private Label VipRoom;
+
+    private int NormalN = 5;
+    private int DoubleBedN = 7;
+    private int VipN = 2;
 
     @FXML
     void LoginClicked(ActionEvent event) {//LOGIN CHECK
@@ -43,45 +51,12 @@ public class Controller {
     }
 
     @FXML
-    void CancelClicked1(ActionEvent event) throws IOException {//RETURN TO WP.fxml from EI.fxml
-        Parent employeeInterface = FXMLLoader.load(getClass().getResource("WP.fxml"));
-        Scene employeeScene = new Scene(employeeInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(employeeScene);
-        window.show();
-    }
-
-    @FXML
     void OK1Clicked(ActionEvent event) throws IOException {//RETURN TO EI.fxml FROM Invalid.fxml
         Parent employeeInterface = FXMLLoader.load(getClass().getResource("EI.fxml"));
         Scene employeeScene = new Scene(employeeInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(employeeScene);
         window.show();
-    }
-
-    @FXML
-    void BOOKClicked(ActionEvent event) throws IOException {//OPEN NewGuest.fxml
-        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("NewGuest.fxml"));
-        Scene NewGuestScene = new Scene(NewGuestInterface); 
-        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
-        window.setScene(NewGuestScene);
-        window.show();
-    }
-
-    @FXML
-    void CancelBookingClicked(ActionEvent event) throws IOException {//CHECKING FOR CANCEL BOOKING
-        if(CancelBooking()){
-            Parent root = FXMLLoader.load(getClass().getResource("NoNewGuest.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } else {
-            Parent root = FXMLLoader.load(getClass().getResource("YouSure.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        }
     }
 
     @FXML
@@ -146,7 +121,24 @@ public class Controller {
         window.show();
     }
 
-    
+    @FXML
+    void XClicked(ActionEvent event) throws IOException {//RETURN TO GI.fxml
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
+        Scene NewGuestScene = new Scene(NewGuestInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(NewGuestScene);
+        window.show();
+    }
+
+    @FXML
+    void CancelClicked1(ActionEvent event) throws IOException {//RETURN TO WP.fxml from EI.fxml
+        Parent employeeInterface = FXMLLoader.load(getClass().getResource("WP.fxml"));
+        Scene employeeScene = new Scene(employeeInterface); 
+        Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
+        window.setScene(employeeScene);
+        window.show();
+    }
+
     @FXML
     void ViewClicked(ActionEvent event) throws IOException {//OPEN RoomList.fxml
         Parent ViewInterface = FXMLLoader.load(getClass().getResource("RoomList.fxml"));
@@ -157,12 +149,34 @@ public class Controller {
     }
 
     @FXML
-    void XClicked(ActionEvent event) throws IOException {//RETURN TO GI.fxml
-        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("GI.fxml"));
+    void CancelBookingClicked(ActionEvent event) throws IOException {//CHECKING FOR CANCEL BOOKING
+        if(CancelBooking()){
+            Parent root = FXMLLoader.load(getClass().getResource("NoNewGuest.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } else {
+            Parent root = FXMLLoader.load(getClass().getResource("YouSure.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+    }
+
+    @FXML
+    void BOOKClicked(ActionEvent event) throws IOException {//OPEN NewGuest.fxml
+        Parent NewGuestInterface = FXMLLoader.load(getClass().getResource("NewGuest.fxml"));
         Scene NewGuestScene = new Scene(NewGuestInterface); 
         Stage window = (Stage)((Button) event.getSource()).getScene().getWindow(); 
         window.setScene(NewGuestScene);
         window.show();
+    }
+
+    @FXML
+    void ReClicked(ActionEvent event) {//SHOW NUMBER OF ROOM AVAILABLE AT THE MOMENT
+        NormalRoom.setText(String.valueOf(NormalN));
+        DoubleBedRoom.setText(String.valueOf(DoubleBedN));
+        VipRoom.setText(String.valueOf(VipN));
     }
 
     private boolean CancelBooking() {//HELP TO OPEN YouSure.fxml

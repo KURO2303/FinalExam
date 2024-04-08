@@ -64,7 +64,7 @@ public class GuestController {
         LocalDate endDate = Time2.getValue();
         double TotalPrice = 0;
         double FinalPrice = 0;
-        if (!MissInfo(startDate, endDate)) {
+        if (!MissInfo(startDate, endDate)) {//CHECK IF THE GUEST HAVE INPUT THEIR INFORMATION CORRECTLY
             Parent root = FXMLLoader.load(getClass().getResource("InvalidGuest.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -121,7 +121,7 @@ public class GuestController {
         }
     }
 
-    private boolean MissInfo(LocalDate startDate, LocalDate endDate) {//CHECK IF THE GUEST INPUT THEIR INFORMATION CORRECTLY
+    private boolean MissInfo(LocalDate startDate, LocalDate endDate) {//HELP CHECK IF THE GUEST INPUT THEIR INFORMATION CORRECTLY
         return !FirstName.getText().isEmpty() && 
                !LastName.getText().isEmpty() &&
                !Gender().isEmpty() &&
