@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class GuestHandle {
+public class GuestHandle {//OPERATE ADD, REJECT FUNCTIONS IN MI.fxml AND WP.fxml
     @FXML private TextField AddressAR;
     @FXML private TextField CityAR;
     @FXML private TextField EmailAR;

@@ -18,7 +18,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class ReceiptPrinter {
+public class ReceiptPrinter {//OPERATE THE MAIN FUNCTIONS IN EMPLOYEE INTERFACE
     @FXML private TextField AddressR;
     @FXML private TextField EmailR;
     @FXML private TextField NameR;

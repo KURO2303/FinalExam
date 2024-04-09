@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-public class GuestController {
+public class GuestController {//OPERATE THE MAIN FUNCTION IN NewGuest.fxml
 
     ObservableList<String> RegionList = FXCollections.observableArrayList("Asia", "Europe", "North America");
     ObservableList<String> CountryList = FXCollections.observableArrayList("VietNam", "France", "America");

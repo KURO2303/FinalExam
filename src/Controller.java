@@ -15,7 +15,7 @@ import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class Controller {
+public class Controller {//OPERATE MOST OF THE FUNCTIONS IN GUEST INTERFACE
     @FXML private TextField hiUser;
     @FXML private PasswordField hiPass;
     @FXML private Button loginButton;
