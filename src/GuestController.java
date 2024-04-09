@@ -83,8 +83,8 @@ public class GuestController {
                 }
             }
     
-            long stayDuration = calculateStayDuration(startDate, endDate);//CACULATE MONEY
-            TotalPrice = USD * stayDuration;
+            long stayDuration = calculateStayDuration(startDate, endDate);//CACULATE NIGHTS
+            TotalPrice = USD * stayDuration;//CACULATE MONEY
             double tax = 0.15; 
             double T = TotalPrice * tax;
             FinalPrice = TotalPrice + T;
