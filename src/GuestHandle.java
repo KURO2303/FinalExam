@@ -12,7 +12,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class GuestHandle {//OPERATE ADD, REJECT FUNCTIONS IN MI.fxml AND WP.fxml
+public class GuestHandle {//OPERATE WP.fxml AND ADD, REJECT FUNCTIONS IN MI.fxml
     @FXML private TextField AddressAR;
     @FXML private TextField CityAR;
     @FXML private TextField EmailAR;
@@ -51,20 +51,6 @@ public class GuestHandle {//OPERATE ADD, REJECT FUNCTIONS IN MI.fxml AND WP.fxml
             window.setScene(GuestScene);
             window.show();
         }
-    }
-
-    private boolean Rejected() {//HELP TO OPEN Sorry.fxml
-        try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.trim().equals("cleared")) {
-                    return true;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
     @FXML
@@ -106,9 +92,14 @@ public class GuestHandle {//OPERATE ADD, REJECT FUNCTIONS IN MI.fxml AND WP.fxml
         window.show();
     }
 
-    
     @FXML
-    void AddGuestClicked(ActionEvent event) {//ADD GUEST INORMATION FROM HotelData.dat TO GuestData.dat
+    void AddGuestClicked(ActionEvent event) throws IOException {//ADD GUEST INORMATION FROM HotelData.dat TO GuestData.dat
+        if(!MissInfo()){
+        Parent root = FXMLLoader.load(getClass().getResource("NoInfo.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }else{
         try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"));
          BufferedWriter writer = new BufferedWriter(new FileWriter("GuestData.dat"))) {
         String line;
@@ -116,18 +107,23 @@ public class GuestHandle {//OPERATE ADD, REJECT FUNCTIONS IN MI.fxml AND WP.fxml
             writer.write(line);
             writer.newLine();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
+    } catch (IOException e) {}
     }
     }
 
-    
     @FXML
     void RejectClicked(ActionEvent event) throws IOException {//REJECT GUEST BOOKING AND DELETE THAT GUEST INFORMATION IN HotelData.dat
+        if(NoGuest()||!MissInfo()){
+            Parent root = FXMLLoader.load(getClass().getResource("NoInfo.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }else{
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("HotelData.dat"))) {
             String newData = "cleared";
             writer.write(newData);
         } catch (IOException e) {}
+    }
     }
 
     String binaryToString(String binary) {//BINARY READER
@@ -139,5 +135,40 @@ public class GuestHandle {//OPERATE ADD, REJECT FUNCTIONS IN MI.fxml AND WP.fxml
             }
         }
         return result.toString();
+    }
+
+    private boolean Rejected() {//HELP TO OPEN Sorry.fxml
+        try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("cleared")) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private boolean NoGuest(){//CHECK IF GUEST ADDED OR NOT
+        try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
+            return reader.readLine() == null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private boolean MissInfo() {//CHECK IF THE GUEST INFORMATION ADDED OR NOT
+        return !NameAR.getText().isEmpty() &&
+        !AddressAR.getText().isEmpty() &&
+        !CityAR.getText().isEmpty() &&
+        !GenderAR.getText().isEmpty() &&
+        !IDAR.getText().isEmpty() &&
+        !EmailAR.getText().isEmpty() &&
+        !PhoneAR.getText().isEmpty() &&
+        !TimeAR.getText().isEmpty() &&
+        !DesAR.getText().isEmpty();     
     }
 }
