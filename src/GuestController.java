@@ -64,7 +64,7 @@ public class GuestController {//OPERATE THE MAIN FUNCTION IN NewGuest.fxml
         LocalDate endDate = Time2.getValue();
         double TotalPrice = 0;
         double FinalPrice = 0;
-        if (!MissInfo(startDate, endDate)) {//CHECK IF THE GUEST HAVE INPUT THEIR INFORMATION CORRECTLY
+        if (MissInfo(startDate, endDate)) {//CHECK IF THE GUEST HAVE INPUT THEIR INFORMATION CORRECTLY
             Parent root = FXMLLoader.load(getClass().getResource("InvalidGuest.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -171,22 +171,22 @@ public class GuestController {//OPERATE THE MAIN FUNCTION IN NewGuest.fxml
     }
 
     private boolean MissInfo(LocalDate startDate, LocalDate endDate) {//HELP CHECK IF THE GUEST INPUT THEIR INFORMATION CORRECTLY
-        return !FirstName.getText().isEmpty() && 
-               !LastName.getText().isEmpty() &&
-               !Gender().isEmpty() &&
-               !Address.getText().isEmpty() &&
-               !ID.getText().isEmpty() &&
-               !City.getText().isEmpty() &&
-               !Email.getText().isEmpty() &&
-               !NAdults.getText().isEmpty() &&
-               !NChild.getText().isEmpty() &&
-               !Phone.getText().isEmpty() &&
-               startDate != null &&
-               endDate != null &&
-               Region.getValue() != null &&
-               Country.getValue() != null &&
-               RoomID.getValue() != null &&
-               (Male.isSelected() || Female.isSelected() || Other.isSelected()) &&
-               startDate.isBefore(endDate); 
-    }
+        return FirstName.getText().isEmpty() ||
+               LastName.getText().isEmpty() ||
+               Gender().isEmpty() ||
+               Address.getText().isEmpty() ||
+               ID.getText().isEmpty() ||
+               City.getText().isEmpty() ||
+               Email.getText().isEmpty() ||
+               NAdults.getText().isEmpty() ||
+               NChild.getText().isEmpty() ||
+               Phone.getText().isEmpty() ||
+               startDate == null ||
+               endDate == null ||
+               Region.getValue() == null ||
+               Country.getValue() == null ||
+               RoomID.getValue() == null ||
+               !(Male.isSelected() || !Female.isSelected() || !Other.isSelected()) ||
+               !startDate.isBefore(endDate); 
+    }    
 }

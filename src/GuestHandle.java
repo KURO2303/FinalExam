@@ -61,6 +61,12 @@ public class GuestHandle {//OPERATE WP.fxml AND ADD, REJECT FUNCTIONS IN MI.fxml
 
     @FXML
     void Clicked(ActionEvent event) throws IOException {//FILL GUEST INFO TO ADD OR REJECT THEIR BOOKING
+        if(MissInfo()){
+            Parent root = FXMLLoader.load(getClass().getResource("NoInfo.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }else{
         try (BufferedReader reader = new BufferedReader(new FileReader("HotelData.dat"))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -82,6 +88,7 @@ public class GuestHandle {//OPERATE WP.fxml AND ADD, REJECT FUNCTIONS IN MI.fxml
             }
         } catch (IOException e) {}
     }
+}
 
     @FXML
     void X3Clicked(ActionEvent event) throws IOException {//RETURN TO MI.fxml FROM AR.fxml
@@ -94,7 +101,7 @@ public class GuestHandle {//OPERATE WP.fxml AND ADD, REJECT FUNCTIONS IN MI.fxml
 
     @FXML
     void AddGuestClicked(ActionEvent event) throws IOException {//ADD GUEST INORMATION FROM HotelData.dat TO GuestData.dat
-        if(!MissInfo()){
+        if(MissInfo()){
         Parent root = FXMLLoader.load(getClass().getResource("NoInfo.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -113,7 +120,7 @@ public class GuestHandle {//OPERATE WP.fxml AND ADD, REJECT FUNCTIONS IN MI.fxml
 
     @FXML
     void RejectClicked(ActionEvent event) throws IOException {//REJECT GUEST BOOKING AND DELETE THAT GUEST INFORMATION IN HotelData.dat
-        if(NoGuest()||!MissInfo()){
+        if(NoGuest()||MissInfo()){
             Parent root = FXMLLoader.load(getClass().getResource("NoInfo.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -161,14 +168,14 @@ public class GuestHandle {//OPERATE WP.fxml AND ADD, REJECT FUNCTIONS IN MI.fxml
     }
 
     private boolean MissInfo() {//CHECK IF THE GUEST INFORMATION ADDED OR NOT
-        return !NameAR.getText().isEmpty() &&
-        !AddressAR.getText().isEmpty() &&
-        !CityAR.getText().isEmpty() &&
-        !GenderAR.getText().isEmpty() &&
-        !IDAR.getText().isEmpty() &&
-        !EmailAR.getText().isEmpty() &&
-        !PhoneAR.getText().isEmpty() &&
-        !TimeAR.getText().isEmpty() &&
-        !DesAR.getText().isEmpty();     
+        return NameAR.getText().isEmpty() &&
+        AddressAR.getText().isEmpty() &&
+        CityAR.getText().isEmpty() &&
+        GenderAR.getText().isEmpty() &&
+        IDAR.getText().isEmpty() &&
+        EmailAR.getText().isEmpty() &&
+        PhoneAR.getText().isEmpty() &&
+        TimeAR.getText().isEmpty() &&
+        DesAR.getText().isEmpty();     
     }
 }
