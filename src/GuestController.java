@@ -22,7 +22,9 @@ import javafx.stage.Stage;
 public class GuestController {//OPERATE THE MAIN FUNCTION IN NewGuest.fxml
 
     ObservableList<String> RegionList = FXCollections.observableArrayList("Asia", "Europe", "North America");
-    ObservableList<String> CountryList = FXCollections.observableArrayList("VietNam", "France", "America");
+    ObservableList<String> CountryList1 = FXCollections.observableArrayList("VietNam", "Tokyo", "Korea");
+    ObservableList<String> CountryList2 = FXCollections.observableArrayList("France", "Italy", "United Kingdom");
+    ObservableList<String> CountryList3 = FXCollections.observableArrayList("America", "Canada", "Mexico");
     ObservableList<String> RoomIDList = FXCollections.observableArrayList("Normal", "V.I.P.", "Double Bed");
 
     @FXML private TextField Address;
@@ -48,14 +50,34 @@ public class GuestController {//OPERATE THE MAIN FUNCTION IN NewGuest.fxml
     private int USD;
 
     @FXML
-    private void initialize() {
+    private void initialize() {//HANDLE CHOICE BOX AND RATIO BUTTON
         Region.setItems(RegionList);
         RoomID.setItems(RoomIDList);
-        Country.setItems(CountryList);
         toggleGroup = new ToggleGroup();
         Female.setToggleGroup(toggleGroup);
         Male.setToggleGroup(toggleGroup);
         Other.setToggleGroup(toggleGroup);
+    }
+
+    @FXML
+    private void RegionClicked() {//HANDLE COUNTRY CHOICE BOX AFTER FINISH CHOOSING REGION
+        String RegionID = Region.getValue();
+    if (RegionID != null) {
+        switch (RegionID) {
+            case "Asia":
+                Country.setItems(CountryList1);
+                break;
+            case "Europe":
+                Country.setItems(CountryList2);
+                break;
+            case "North America":
+                Country.setItems(CountryList3);
+                break;
+            default:
+                Country.setItems(FXCollections.emptyObservableList());
+                break;
+        }
+    }
     }
 
     @FXML
